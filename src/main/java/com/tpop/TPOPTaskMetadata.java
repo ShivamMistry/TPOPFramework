@@ -10,11 +10,11 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TPOPTaskMetadata {
-    String name();
+    String name();   //name
 
-    String description() default "";
+    String description() default ""; //description
 
-    double version() default 1.00d;
+    double version() default 1.00d; //version
 
-    String practical();
+    String practical(); //practical name
 }

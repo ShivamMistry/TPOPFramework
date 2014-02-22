@@ -18,9 +18,11 @@ public class Task1 implements TPOPTask {
         while (true) {
             try {
                 Thread.sleep(100L);
+                //current thread sleeps for 100L
             } catch (InterruptedException e) {
                 System.out.println("Interrupted :(");
-                return;
+                //we were interrupted
+                return; //returns
             }
         }
 
