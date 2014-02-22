@@ -1,14 +1,20 @@
-package com.shivam.tpop;
+package com.tpop;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
- * Created with IntelliJ IDEA.
  * User: sm1334
  * Date: 21/02/14
  * Time: 15:30
- * To change this template use File | Settings | File Templates.
  */
+@Retention(RetentionPolicy.RUNTIME)
 public @interface TPOPTaskMetadata {
     String name();
+
     String description() default "";
+
     double version() default 1.00d;
+
+    String practical();
 }
