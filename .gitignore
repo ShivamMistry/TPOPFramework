@@ -5,6 +5,7 @@
 *.war
 *.ear
 
+*.ipr
 .idea/
-.iml
+*.iml
 target/
