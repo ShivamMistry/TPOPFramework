@@ -1,20 +1,16 @@
 package com.tpop.practical.practical14;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created with IntelliJ IDEA.
  * User: sm1334
  * Date: 28/02/14
- * Time: 16:05
- * To change this template use File | Settings | File Templates.
  */
 public class WeightedGraph {
     private City[] cities;
     private int[][] edges;
-    private int n;
+    private final int n;
     private int currentSize = 0;
 
     public WeightedGraph(int n) {
@@ -114,11 +110,11 @@ public class WeightedGraph {
         }
         currentSize--;
 
-        reduceSpace();
+        defragment();
         return true;
     }
 
-    private void reduceSpace() {
+    private void defragment() {
         if (freeSpace() >= n) {
             //reduce space by n
             int length = cities.length;
@@ -168,8 +164,8 @@ public class WeightedGraph {
 
     private int freeSpace() {
         int freeSpace = 0;
-        for (int i = 0; i < cities.length; i++) {
-            if (cities[i] == null) freeSpace++;
+        for (City city : cities) {
+            if (city == null) freeSpace++;
         }
         return freeSpace;
     }
@@ -181,9 +177,9 @@ public class WeightedGraph {
             return -1;
         }
         int degree = 0;
-        for (int i = 0; i < edges.length; i++) {
-            for (int x = 0; x < edges[i].length; x++) {
-                if (x == index && edges[i][x] != 0) {
+        for (int[] edge : edges) {
+            for (int x = 0; x < edge.length; x++) {
+                if (x == index && edge[x] != 0) {
                     degree++;
                     /*if (i == index) {
                         ++degree;

@@ -36,8 +36,11 @@ public class Question2 implements TPOPTask {
         graph.addEdge(york, paris, 1000);
         graph.addEdge(london, paris, 400);
         graph.addEdge(london, new_york, 30000);
+        graph.removeEdge(london, new_york);
+        System.out.println(graph.getDegree(london));
+        System.out.println(graph.getSize());
         System.out.println(graph);
-        System.out.println(graph.removeVertex(york));
+        graph.removeVertex(york);
         System.out.println(graph);
     }
 }

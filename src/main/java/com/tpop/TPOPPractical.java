@@ -15,9 +15,9 @@ public class TPOPPractical {
 
     private static final Properties TPOP_PROPERTIES;
     private static final File OUTPUT_FILE;
-    private List<TPOPTask> tasks = new LinkedList<>();
-    private ExecutorService executor;
-    private static File[] practicals;
+    private final List<TPOPTask> tasks = new LinkedList<>();
+    private final ExecutorService executor;
+    private static final File[] practicals;
 
 
     static {
