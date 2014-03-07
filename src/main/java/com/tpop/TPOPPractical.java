@@ -115,8 +115,12 @@ public class TPOPPractical {
                 System.out.printf("\tTask Name: %s, Description: %s, Version: %.2f\n",
                         metadata.name(), metadata.description(), metadata.version());
             //new instance
-            TPOPTask taskInstance = (TPOPTask) task.newInstance();
-            tasks.add(taskInstance);
+            if (TPOPTask.class.isAssignableFrom(task)) {
+                TPOPTask taskInstance = (TPOPTask) task.newInstance();
+                tasks.add(taskInstance);
+            } else {
+                System.out.printf("\tClass %s is not a task so ignoring\n", task.getCanonicalName());
+            }
         }
         System.out.println("Loaded " + tasks.size() + " exercises");
         for (TPOPTask tpop : tasks) {

@@ -3,6 +3,8 @@ package com.tpop.practical.practical14;
 import com.tpop.TPOPTask;
 import com.tpop.TPOPTaskMetadata;
 
+import javax.swing.*;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sm1334
@@ -19,6 +21,6 @@ public class Question1 implements TPOPTask {
 
     public void run() {
         City london = new City("London", "UK", "Greater London", "GMT", 51.507222D, -0.1275D);
-        System.out.println(london);
+        //System.out.println(london);
     }
 }
