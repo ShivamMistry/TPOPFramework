@@ -3,6 +3,9 @@ package com.tpop.practical.practical14;
 import com.tpop.TPOPTask;
 import com.tpop.TPOPTaskMetadata;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sm1334
@@ -16,8 +19,11 @@ import com.tpop.TPOPTaskMetadata;
         practical = "Practical 14")
 public class Question2 implements TPOPTask {
 
+	private WeightedGraph graph;
+	private List<String> results = new ArrayList<>();
+
     public void run() {
-        WeightedGraph graph = new WeightedGraph(2);
+        graph = new WeightedGraph(2);
         //THESE AREN'T CORRECT
         City london = new City("London", "UK", "Greater London", "GMT", 51.507222D, -0.1275D);
         City york = new City("York", "UK", "North Yorkshire", "GMT", 10, -0.1275D);
@@ -37,10 +43,14 @@ public class Question2 implements TPOPTask {
         graph.addEdge(london, paris, 400);
         graph.addEdge(london, new_york, 30000);
         graph.removeEdge(london, new_york);
-        System.out.println(graph.getDegree(london));
-        System.out.println(graph.getSize());
-        System.out.println(graph);
+        results.add(String.valueOf(graph.getDegree(london)));
+        results.add(String.valueOf(graph.getSize()));
+        results.add(String.valueOf(graph));
         graph.removeVertex(york);
-        System.out.println(graph);
+		results.add(String.valueOf(graph));
     }
+
+	public String[] results() {
+		return results.toArray(new String[results.size()]);
+	}
 }

@@ -3,8 +3,6 @@ package com.tpop.practical.practical14;
 import com.tpop.TPOPTask;
 import com.tpop.TPOPTaskMetadata;
 
-import javax.swing.*;
-
 /**
  * Created with IntelliJ IDEA.
  * User: sm1334
@@ -13,14 +11,19 @@ import javax.swing.*;
  * To change this template use File | Settings | File Templates.
  */
 @TPOPTaskMetadata(name = "Question 1",
-        description = "Vertex class",
-        version = 1.00D,
-        practical = "Practical 14")
+		description = "Vertex class",
+		version = 1.00D,
+		practical = "Practical 14")
 public class Question1 implements TPOPTask {
 
+	private City london;
 
-    public void run() {
-        City london = new City("London", "UK", "Greater London", "GMT", 51.507222D, -0.1275D);
-        //System.out.println(london);
-    }
+	public void run() {
+		london = new City("London", "UK", "Greater London", "GMT", 51.507222D, -0.1275D);
+	}
+
+	@Override
+	public String[] results() {
+		return new String[]{london.toString()};
+	}
 }

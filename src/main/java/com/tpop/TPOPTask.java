@@ -8,4 +8,7 @@ package com.tpop;
 public interface TPOPTask extends Runnable {
 
 
+	public String[] results();
+
+
 }

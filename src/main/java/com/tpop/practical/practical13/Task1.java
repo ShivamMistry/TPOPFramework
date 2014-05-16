@@ -27,4 +27,9 @@ public class Task1 implements TPOPTask {
         }
 
     }
+
+	@Override
+	public String[] results() {
+		return new String[0];
+	}
 }
