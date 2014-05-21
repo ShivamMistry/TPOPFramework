@@ -13,7 +13,7 @@ import java.util.List;
  * Time: 15:59
  * To change this template use File | Settings | File Templates.
  */
-@TPOPTaskMetadata(name = "Question 1",
+@TPOPTaskMetadata(name = "Question 2",
         description = "Weighted Graph",
         version = 1.00D,
         practical = "Practical 14")
@@ -47,6 +47,7 @@ public class Question2 implements TPOPTask {
         results.add(String.valueOf(graph.getSize()));
         results.add(String.valueOf(graph));
         graph.removeVertex(york);
+		results.add(String.valueOf(graph.getSize()));
 		results.add(String.valueOf(graph));
     }
 

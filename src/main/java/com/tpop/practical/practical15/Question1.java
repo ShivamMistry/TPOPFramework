@@ -25,7 +25,7 @@ public class Question1 implements TPOPTask {
 
 
 	private static class Vertex<T extends Comparable> implements Comparable<Vertex> {
-		private T data;
+		private final T data;
 		private ArrayList<Edge> edges;
 		private int distance;
 		private Vertex previous;
@@ -144,6 +144,7 @@ public class Question1 implements TPOPTask {
 			long finish = System.currentTimeMillis() - start;
 			results.add("Time for q1: " + finish + " ms");
 			start = System.currentTimeMillis();
+			lines = 0;
 			vertices = parseData(getClass().getResource("/p15-triangle.txt").getFile());
 			solve();
 			finish = System.currentTimeMillis() - start;
@@ -159,7 +160,6 @@ public class Question1 implements TPOPTask {
 		for (int i = 0; i < data.length; i++) {
 			d[i] = Integer.parseInt(data[i]);
 		}
-
 		return d;
 	}
 
@@ -179,8 +179,7 @@ public class Question1 implements TPOPTask {
 			if (v.getDistance() == Integer.MIN_VALUE) {
 				break;
 			}
-			for (Object o : v.getEdges()) {
-				Edge e = (Edge) o;
+			for (Edge e : v.getEdges()) {
 				int alt = v.getDistance() + ((int) e.getV2().getData() - v.getData());
 				if (alt > e.getV2().getDistance()) {
 					queue.remove(e.getV2());
@@ -194,29 +193,29 @@ public class Question1 implements TPOPTask {
 		int greatest = Integer.MIN_VALUE;
 		List<Vertex<Integer>> greatestPath = null;
 		for (int i = vertices.length - lines; i < vertices.length; i++) {
-			Vertex v = vertices[i];
-			LinkedList<Vertex<Integer>> path = new LinkedList<>();
+			Vertex<Integer> v = vertices[i];
+			ArrayList<Vertex<Integer>> path = new ArrayList<>(100);
 			int size = 0;
 			while (v != null) {
 				path.add(v);
-				size += (int) v.data;
+				size += v.data;
 				v = v.getPrevious();
 			}
-			Collections.reverse(path);
 			if (size > greatest) {
 				greatest = size;
+				Collections.reverse(path);
 				greatestPath = path;
 			}
 		}
 		if (greatestPath != null) {
 			results.add(String.valueOf(greatestPath));
-			results.add(String.valueOf(greatestPath.stream().mapToInt(Vertex::getData).sum()));
+			results.add(String.valueOf(greatestPath.stream().map(Vertex::getData).reduce(0, (a, b) -> a + b)));
 		}
 	}
 
 	private Vertex[] parseData(String fileName) throws IOException {
 		BufferedReader read = new BufferedReader(new FileReader(fileName));
-		LinkedList<Vertex> vertices = new LinkedList<>();
+		ArrayList<Vertex> vertices = new ArrayList<>();
 		String line = read.readLine();
 		lines += 1;
 		Vertex[] lastLine = new Vertex[1];

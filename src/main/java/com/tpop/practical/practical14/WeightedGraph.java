@@ -131,7 +131,7 @@ public class WeightedGraph {
                         //move city to the free space
                         cities[index] = city;
                         cities[i] = null;
-                        //update the graph
+                        //update the adj matrix
                         for (int x = 0; x < edges.length; x++) {
                             for (int y = 0; y < edges.length; y++) {
                                 if (x == i) {
@@ -150,6 +150,7 @@ public class WeightedGraph {
                         this.cities = newList;
                         int[][] oldEdges = edges;
                         System.arraycopy(oldEdges, 0, newEdges, 0, newLength);
+						//resize each array internally
                         for (int j = 0; j < newEdges.length; j++) {
                             int[] newArray = new int[newLength];
                             System.arraycopy(oldEdges[j], 0, newArray, 0, newLength);
